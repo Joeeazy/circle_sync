@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { IoMoon } from "react-icons/io5";
 import { LuSun } from "react-icons/lu";
+import CreateUserModel from "./CreateUserModel";
 
 export default function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -63,6 +64,7 @@ export default function Navbar() {
             <Button onClick={toggleColorMode}>
               {colorMode === "light" ? <IoMoon /> : <LuSun size={20} />}
             </Button>
+            <CreateUserModel />
           </Flex>
         </Flex>
       </Box>

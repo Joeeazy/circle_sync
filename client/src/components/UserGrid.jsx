@@ -1,49 +1,21 @@
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  Heading,
-  Box,
-  Text,
-  StackDivider,
-  Stack,
-} from "@chakra-ui/react";
+import { Grid } from "@chakra-ui/react";
+import axios from "axios";
+import { USERS } from "../dummy/dummy";
+import UserCard from "./UserCard";
 
 export default function UserGrid() {
   return (
-    <Card>
-      <CardHeader>
-        <Heading size="md">Client Report</Heading>
-      </CardHeader>
-
-      <CardBody>
-        <Stack divider={<StackDivider />} spacing="4">
-          <Box>
-            <Heading size="xs" textTransform="uppercase">
-              Summary
-            </Heading>
-            <Text pt="2" fontSize="sm">
-              View a summary of all your clients over the last month.
-            </Text>
-          </Box>
-          <Box>
-            <Heading size="xs" textTransform="uppercase">
-              Overview
-            </Heading>
-            <Text pt="2" fontSize="sm">
-              Check out the overview of your clients.
-            </Text>
-          </Box>
-          <Box>
-            <Heading size="xs" textTransform="uppercase">
-              Analysis
-            </Heading>
-            <Text pt="2" fontSize="sm">
-              See a detailed analysis of all your business clients.
-            </Text>
-          </Box>
-        </Stack>
-      </CardBody>
-    </Card>
+    <Grid
+      templateColumns={{
+        base: "1fr",
+        md: "repeat(2, 1fr)",
+        lg: "repeat(3, 1fr)",
+      }}
+      gap={4}
+    >
+      {USERS.map((user) => (
+        <UserCard key={user.id} user={user} />
+      ))}
+    </Grid>
   );
 }
