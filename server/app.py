@@ -9,16 +9,22 @@ app = Flask(__name__)
 #initialize CORS
 CORS(app)
 
-# Config a database sqlite
+# Create a database sqlite
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///circle_sync.db"
 
-# config for perfomance 
+# config for perfomance NO Tracking
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 #create db instance
 db = SQLAlchemy(app)
 
+# Mount routes
+import routes
 
-#run app
+# Create all tables
+with app.app_context():
+    db.create_all()
+
+#run app.py
 if __name__ == "__main__":
     app.run(debug=True)
