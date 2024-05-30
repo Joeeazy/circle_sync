@@ -18,7 +18,7 @@ pip-selfcheck.json
 .env
 
 # Database
-friends.db
+circle_sync.db
 
 # Compiled Python files
 *.pyc
