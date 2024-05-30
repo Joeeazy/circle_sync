@@ -60,4 +60,26 @@ def create_friends():
         db.session.rollback()
         return jsonify({"error":str(e)}), 500
 
-        
+#DELETE A FRIEND ROUTE
+@app.route("/api/friends/<int:id>", methods=["DELETE"])
+def delete_friend(id):
+    try:
+        # get the friend from schema using their id 
+        friend = Friend.query.get(id)
+
+        # check if friend exists
+        if friend is None:
+            return jsonify({"error": "Friend Id not Found"})
+
+        # if they exists delete them from the db
+        db.session.delete(friend)
+        # commit the changes
+        db.session.commit()
+
+        # return a success response
+        return jsonify({"msg": " Friend Deleted successfully"})
+
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error":str(e)}), 500
+
