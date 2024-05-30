@@ -1,8 +1,10 @@
 function App() {
   return (
-    <>
-      <h1>Hello</h1>
-    </>
+    <stack minM={"100vh"}>
+      <Navbar />
+
+      <container maxW={"1200px"} my={4}></container>
+    </stack>
   );
 }
 
