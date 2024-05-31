@@ -61,7 +61,7 @@ export default function UserCard({ user, setUsers }) {
           {/* right side */}
           <Flex>
             {/* {edit icon} */}
-            <EditModal />
+            <EditModal setUsers={setUsers} user={user} />
             {/* delete button */}
             <IconButton
               variant="ghost"
