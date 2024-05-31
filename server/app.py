@@ -19,11 +19,12 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 #create db instance
 db = SQLAlchemy(app)
 
+
 #deployement on render fixes
-client_folder = os.path.join(os.getcwd(), "..", "client") 
-dist_folder = os.path.join(client_folder,"dist")
+client_folder = os.path.join(os.getcwd(), "..", "client") #get frontend directory
+dist_folder = os.path.join(client_folder,"dist") #get dist directory
 # server static file from the "dist" folder under the "client" dir as home("/")
-@app.route("/", defaults={"filename":""})
+@app.route("/", defaults={"filename":""}) #server client as home in server-side url
 @app.route("/<path:filename>")
 def index(filename):
     if not filename:
