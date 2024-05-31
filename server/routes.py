@@ -31,7 +31,7 @@ def create_friends():
 
         # validations
         for required_field in required_fields:
-            if required_field not in data:
+            if required_field not in data or not data.get(required_field):
                 return jsonify({"error": f"Missing required field: {required_field}"}), 400
 
 
@@ -55,7 +55,7 @@ def create_friends():
             #commit
         db.session.commit()
 
-        return jsonify({"msg":" New Friend successfully created"}), 201
+        return jsonify(new_friend.to_json()), 201
 
     except Exception as e:
         db.session.rollback()
