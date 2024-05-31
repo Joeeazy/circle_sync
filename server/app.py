@@ -1,6 +1,7 @@
-from flask import Flask
+from flask import Flask, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
+import os
 
 # Flask constructor takes the name of 
 # current module (__name__) as argument.
@@ -18,7 +19,19 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 #create db instance
 db = SQLAlchemy(app)
 
-# Mount routes
+#deployement on render fixes
+client_folder = os.path.join(os.getcwd(), "..", "client") 
+dist_folder = os.path.join(client_folder,"dist")
+# server static file from the "dist" folder under the "client" dir as home("/")
+@app.route("/", defaults={"filename":""})
+@app.route("/<path:filename>")
+def index(filename):
+    if not filename:
+        filename = "index.html"
+    return send_from_directory(dist_folder,filename)
+
+
+# Mount api routes
 import routes
 
 # Create all tables
