@@ -12,8 +12,6 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  Radio,
-  RadioGroup,
   Textarea,
   useDisclosure,
 } from "@chakra-ui/react";
@@ -35,7 +33,7 @@ export default function EditModal() {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>My new BFF 😍</ModalHeader>
+          <ModalHeader>My new Friend 😎</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
             <Flex alignItems={"center"} gap={4}>
@@ -58,12 +56,6 @@ export default function EditModal() {
                 "
               />
             </FormControl>
-            <RadioGroup defaultValue="male" mt={4}>
-              <Flex gap={5}>
-                <Radio value="male">Male</Radio>
-                <Radio value="female">Female</Radio>
-              </Flex>
-            </RadioGroup>
           </ModalBody>
 
           <ModalFooter>
